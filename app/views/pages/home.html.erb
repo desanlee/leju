@@ -5,14 +5,16 @@
   sample application.
 </p>
 
-<ul>
-<li>
-#
-</li>
-<li>
-<p>
-还没有帐号吗？ 
-</p> 
-<%= link_to "立即注册！", signup_path, :class => "signup_button round" %>
-</li>
-</ul> 
+<table class="home" summary="home information">
+  <tr>
+    <td class="left">
+      <h1>
+        #
+      </h1>
+    </td>
+    <td class="right">
+      <strong>还没有帐号吗？</strong><br />
+      <%= link_to "立即注册！", signup_path, :class => "signup_button round" %>
+    </td>
+  </tr>
+</table>
