@@ -8,13 +8,24 @@
 <table class="home" summary="home information">
   <tr>
     <td class="left">
-      <h1>
-        #
-      </h1>
+		<%= form_for(:session, :url => sessions_path) do |f| %>
+			<%= render 'shared/error_messages' %>
+			<div class="field">
+			<%= f.label :"电子邮件 / Email" %><br />
+			<%= f.text_field :email %>
+			</div>
+			<div class="field">
+			<%= f.label :"密码 / password" %><br />
+			<%= f.password_field :password %>
+			</div>
+			<div class="actions">
+			<%= f.submit "登录 / Sign in" %>
+			</div>
+		<% end %>
     </td>
     <td class="right">
-      <strong>还没有帐号吗？</strong><br />
-      <%= link_to "立即注册！", signup_path, :class => "signup_button round" %>
+      <strong>还没有帐号吗？ Do not have an account?</strong><br /><br />
+      <%= link_to "立即注册！ Sign up now!", signup_path, :class => "signup_button round" %>
     </td>
   </tr>
 </table>
