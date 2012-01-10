@@ -1,15 +1,26 @@
-<h1>Sample App</h1>
-<p>
-  This is the home page for the
-  <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-  sample application.
-</p>
 
+<% if signed_in? %>
+
+<table class="front" summary="For signed-in users">
+    <tr>
+      <td class="main">
+        <h1 class="micropost">What's up?</h1>
+        <%= render 'shared/micropost_form' %>
+		<%= render 'shared/feed' %>
+      </td>
+      <td class="sidebar round">
+        <%= render 'shared/user_info' %>
+      </td>
+    </tr>
+  </table>
+
+<% else %>
+			  
 <table class="home" summary="home information">
   <tr>
     <td class="left">
 		<%= form_for(:session, :url => sessions_path) do |f| %>
-			<%= render 'shared/error_messages' %>
+			<%= render 'shared/error_messages', :object => f.object %>
 			<div class="field">
 			<%= f.label :"电子邮件 / Email" %><br />
 			<%= f.text_field :email %>
@@ -29,3 +40,5 @@
     </td>
   </tr>
 </table>
+
+<% end %>
