@@ -1,0 +1,4 @@
+<%= form_for @micropost.applylists.build(:micropost_id => @micropost.id) do |f| %>
+  <div><%= f.hidden_field :micropost_id %></div>
+  <div class="actions"><%= f.submit "报名" %></div>
+<% end %>

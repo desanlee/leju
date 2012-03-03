@@ -1,0 +1,13 @@
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+		<h1 class="micropost">修改这个活动?</h1>
+        <%= render 'shared/micropost_form' %>
+    </td>
+    <td class="sidebar round">
+		<strong>Name</strong> <%= @user.name %><br />
+		<strong>URL</strong>  <%= link_to user_path(@user), @user %>
+		<strong>Microposts</strong> <%= @user.microposts.count %>
+    </td>
+  </tr>
+</table>

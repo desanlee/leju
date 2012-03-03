@@ -1,8 +1,21 @@
 Leju::Application.routes.draw do
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
-  resources :users
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :microposts, :only => [:create, :destroy]
+  
+  resources :microposts do
+	member do
+		get :applicant, :involvements
+    end
+  end
+  
+  resources :comments, :only => [:create, :destroy]
+  resources :relationships, :only => [:create, :destroy]
+  resources :applylists, :only => [:create, :destroy]
 
   root :to => 'pages#home'
 

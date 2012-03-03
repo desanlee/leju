@@ -1,17 +1,28 @@
-<tr>
+﻿<tr>
   <td class="gravatar">
     <%= link_to gravatar_for(feed_item.user), feed_item.user %>
+	<% if feed_item.schedual.strftime('%Y%m%d').to_i > Time.now.strftime('%Y%m%d').to_i %>
+		<p style="color:green"><b>招募中!</b></p>
+	<% elsif feed_item.schedual.strftime('%Y%m%d').to_i == Time.now.strftime('%Y%m%d').to_i && feed_item.peoplecount <= feed_item.applicants.count %>
+		<p style="color:red"><b>进行中!</b></p>
+	<% else %>
+		<p style="color:grey"><b>已过期</b></p>
+	<% end %>
+	
   </td>
-  <td class="micropost">
-    <span class="user">
-      <%= link_to feed_item.user.name, feed_item.user %>
-    </span>
-    <span class="content"><%= feed_item.content %></span>
+  <td class="micropost" bgcolor="AliceBlue">
     <span class="timestamp">
+      发起人：<%= link_to feed_item.user.name, feed_item.user %> &nbsp; 活动日期：<%= feed_item.schedual.strftime('%Y-%m-%d') %><br></span>
+	<span class="content"><%= feed_item.content%></span>
+	<span class="timestamp">
       Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
     </span>
 	<span class="operation">
-	  <%= link_to "Comment" %> | <%= link_to "Modify" %> | <%= link_to "Apply" %>
-    </span>
+		<%= link_to "评论", feed_item %> <%= feed_item.comments.count %> | <%= link_to "报名", feed_item %>(<%= feed_item.applicants.count%>/<%= feed_item.peoplecount%>) | <%= link_to "修改", edit_micropost_path(feed_item) %>
+	</span>
   </td>
 </tr>
+
+<% if feed_item.parent == feed_item.id %>
+	<td ></td>
+<% end %>

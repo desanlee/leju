@@ -1,0 +1,9 @@
+﻿<%= form_for @comment do |fc| %>
+  <%= render 'shared/error_messages', :object => fc.object %>
+  <div class="field">
+    <%= fc.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= fc.submit "评论" %>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+<div id="follow_form">
+	<% if @micropost.involved?(current_user) %>
+		<%= render 'uninvolve' %>
+	<% else %>
+		<%= render 'involve' %>
+	<% end %>
+</div>

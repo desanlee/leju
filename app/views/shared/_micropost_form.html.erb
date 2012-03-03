@@ -3,7 +3,12 @@
   <div class="field">
     <%= f.text_area :content %>
   </div>
-  <div class="actions">
-    <%= f.submit "Submit" %>
+  <div class="field">
+	<%= f.label :人数要求： %>
+    <%= f.text_field :peoplecount, :size => 5 %> &nbsp;
+	<%= f.label :活动日期： %>
+    <%= f.text_field :schedual, :onclick =>"SelectDate(this,'yyyy-MM-dd')", :size => 12 %>  &nbsp;
+	<%= f.hidden_field :parent %> 
+    <%= f.submit "确认" %>
   </div>
 <% end %>

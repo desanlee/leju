@@ -67,6 +67,7 @@ nav ul li {
 
 nav ul li a {
   padding: 0 5px;
+  font-size: 200%;
   font-weight: bold;
 }
 
@@ -123,6 +124,7 @@ a.signup_button {
   border-radius:         10px;
 }
 
+
 /* User show page */
 
 table.profile {
@@ -144,7 +146,7 @@ td.sidebar {
 
 .profile img.gravatar {
   border: 1px solid #999;
-  margin-bottom: -15px;
+  margin-bottom: -1px;
 }
 
 div.field, div.actions {
@@ -199,6 +201,7 @@ ul.users {
 .users li {
   list-style: none;
 }
+
 h1.micropost {
   margin-bottom: 0.3em;
 }
@@ -212,18 +215,26 @@ table.microposts tr {
 }
 
 table.microposts tr td.gravatar {
-  border-top: 1px solid #ccc;
+  border-top: 0px solid #ccc;
+  border-bottom: 1px solid #ccc;
   vertical-align: top;
   width: 50px;
 }
 
 table.microposts tr td.micropost {
-  border-top: 1px solid #ccc;
+  border-top: 0px solid #ccc;
+  border-bottom: 1px solid #ccc;
   vertical-align: top;
-  padding-top: 10px;
+  padding-top: 2px;
 }
 
-table.microposts tr td.micropost span.timestamp {
+table.comments tr td.comment {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  padding-top: 2px;
+}
+
+span.timestamp {
   display: block;
   font-size: 85%;
   color: #666;
@@ -242,6 +253,7 @@ div.user_info img {
 
 div.user_info a {
   text-decoration: none;
+  font-size: 120%;
 }
 
 div.user_info span.user_name {
@@ -249,7 +261,7 @@ div.user_info span.user_name {
 }
 
 div.user_info span.microposts {
-  font-size: 80%;
+  font-size: 100%;
 }
 
 form.new_micropost {
@@ -258,5 +270,19 @@ form.new_micropost {
 
 form.new_micropost textarea {
   height: 4em;
+  margin-bottom: 0;
+}
+
+form.new_micropost text_field {
+  height: 1em;
+  margin-bottom: 0;
+}
+
+form.new_comment {
+  margin-bottom: 1em;
+}
+
+form.new_comment textarea {
+  height: 1em;
   margin-bottom: 0;
 }

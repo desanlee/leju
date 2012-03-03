@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_filter :authenticate, :only => [:edit, :update]
+	before_filter :authenticate, :except => [:show, :new, :create]
 	before_filter :correct_user, :only => [:edit, :update]
 	
 	def index
@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@title = @user.name
 		@microposts = @user.microposts.paginate(:page => params[:page])
-
 	end
 
 	def new
@@ -23,7 +22,7 @@ class UsersController < ApplicationController
 		@user = User.new(params[:user])
 		if @user.save
 			sign_in @user
-			flash[:success] = "Welcome to the Sample App!"
+			flash[:success] = "欢迎来到乐聚的空间!"
 			redirect_to @user
 		else
 			@title = "Sign up"
@@ -45,6 +44,20 @@ class UsersController < ApplicationController
 			@title = "Edit user"
 			render 'edit'
 		end
+	end
+
+	def following
+		@title = "关注"
+		@user = User.find(params[:id])
+		@users = @user.following.paginate(:page => params[:page])
+		render 'show_follow' 
+	end
+
+	def followers
+		@title = "粉丝"
+		@user = User.find(params[:id])
+		@users = @user.followers.paginate(:page => params[:page])
+		render 'show_follow' 
 	end
 
 	private

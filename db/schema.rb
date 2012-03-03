@@ -10,16 +10,63 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120110025122) do
+ActiveRecord::Schema.define(:version => 20120223030757) do
+
+  create_table "applications", :force => true do |t|
+    t.integer  "micropost_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "applications", ["micropost_id", "user_id"], :name => "index_applications_on_micropost_id_and_user_id", :unique => true
+  add_index "applications", ["micropost_id"], :name => "index_applications_on_micropost_id"
+  add_index "applications", ["user_id"], :name => "index_applications_on_user_id"
+
+  create_table "applylists", :force => true do |t|
+    t.integer  "micropost_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "applylists", ["micropost_id", "user_id"], :name => "index_applylists_on_micropost_id_and_user_id", :unique => true
+  add_index "applylists", ["micropost_id"], :name => "index_applylists_on_micropost_id"
+  add_index "applylists", ["user_id"], :name => "index_applylists_on_user_id"
+
+  create_table "comments", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "micropost_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["micropost_id", "created_at"], :name => "index_comments_on_post_id_and_created_at"
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "count"
+    t.integer  "parent"
+    t.integer  "peoplecount"
+    t.datetime "schedual"
   end
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
+  add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

@@ -1,0 +1,13 @@
+
+//Add a new model
+$ rails generate model Applylist micropost_id:integer user_id:integer
+$ bundle exec rake db:migrate
+$ bundle exec rake db:test:prepare
+
+//Modify a model
+$ rails generate migration add_schedual_to_microposts schedual:datetime
+$ bundle exec rake db:migrate
+$ bundle exec rake db:test:prepare
+
+//delete all data
+bundle exec rake db:reset
