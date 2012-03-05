@@ -11,3 +11,10 @@ $ bundle exec rake db:test:prepare
 
 //delete all data
 bundle exec rake db:reset
+
+
+heroku rename newname -app oldname
+
+git commit -a -m "change user list page"
+git push
+git push heroku master
