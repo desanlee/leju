@@ -1,13 +1,28 @@
-<h1>All users</h1>
+<h1>所有用户列表</h1>
 
 <%= will_paginate %>
 
+<table>
 <ul class="users">
   <% @users.each do |user| %>
-    <li>
-      <%= gravatar_for user, :size => 30 %>
-      <%= link_to user.name, user %>
-    </li>
+	<tr>
+		<td><%= gravatar_for user, :size => 30 %> </td>
+		<td><%= link_to user.name, user %></td>
+		<td><%= user.email %></td> 
+		<td>发布<%= user.microposts.count %>个活动计划</td>
+		<td>
+		<% if current_user.following?(user) %>
+			<%= form_for current_user.relationships.find_by_followed_id(user), :html => { :method => :delete } do |f| %>
+			<div class="actions"><%= f.submit "取消关注" %></div>
+			<% end %>
+		<% elsif current_user != user %>
+			<%= form_for current_user.relationships.build(:followed_id => user.id) do |f| %>
+			<div><%= f.hidden_field :followed_id %></div>
+			<div class="actions"><%= f.submit "加关注" %></div>
+			<% end %>
+		<% end %>
+	  </td>
+    </tr>
   <% end %>
 </ul>
 

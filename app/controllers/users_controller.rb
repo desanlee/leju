@@ -24,8 +24,8 @@ class UsersController < ApplicationController
 		@user = User.new(params[:user])
 		if @user.save
 			sign_in @user
-			flash[:success] = "欢迎来到乐聚的空间!"
-			redirect_to @user
+			flash[:success] = "欢迎来到乐聚的空间! 请选择要关注的朋友！"
+			redirect_to users_path
 		else
 			@title = "Sign up"
 			render 'new'
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update_attributes(params[:user])
-			flash[:success] = "Profile updated."
+			flash[:success] = "个人信息更改成功！"
 			redirect_to @user
 		else
 			@title = "Edit user"

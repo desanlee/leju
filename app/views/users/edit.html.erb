@@ -1,4 +1,4 @@
-<h1>Edit user</h1>
+<h1>设置自己的信息，请尽量使用实名</h1>
 
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
@@ -19,11 +19,11 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "保存设置" %>
   </div>
 <% end %>
 
 <div>
   <%= gravatar_for @user %>
-  <a href="http://gravatar.com/emails">change</a>
+  <a href="http://gravatar.com/emails">到gravatar注册和设置头像</a>
 </div>
