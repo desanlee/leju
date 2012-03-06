@@ -1,4 +1,15 @@
-﻿<tr>
+﻿
+<% if @feed_items_parent != feed_item.parent %>
+	<% if @feed_items_parent != 0 %><tr></tr><% end %>
+	<% if @feed_items_color == 0  %>
+		<% @feed_items_color = 1 %>
+	<% else %>
+		<% @feed_items_color = 0 %>
+	<% end %>
+	<% @feed_items_parent = feed_item.parent %>
+<% end %>
+
+<tr >
   <td class="gravatar">
     <%= link_to gravatar_for(feed_item.user), feed_item.user %>
 	<% if feed_item.schedual.strftime('%Y%m%d').to_i > Time.now.strftime('%Y%m%d').to_i %>
@@ -10,9 +21,17 @@
 	<% end %>
 	
   </td>
-  <td class="micropost" bgcolor="AliceBlue">
+  
+
+	
+	<% if @feed_items_color == 0 %>
+		<td class="micropost" bgcolor="LightCyan">
+	<% else %>
+		<td class="micropost" bgcolor="AliceBlue">
+	 <% end %>
+	  
     <span class="timestamp">
-      发起人：<%= link_to feed_item.user.name, feed_item.user %> &nbsp; 活动日期：<font color='red'><big><%= feed_item.schedual.strftime('%Y-%m-%d') %> </big></font><br></span>
+      发起人：<%= link_to feed_item.user.name, feed_item.user %> &nbsp; 活动日期：<font color='red'><big><%= feed_item.schedual.strftime('%Y-%m-%d') %> </big></font> &nbsp; 最少<font color='red'><big><%= feed_item.peoplecount %></big></font>人报名才成行<br></span>
 	<span class="content"><%= feed_item.content%></span>
 	<span class="timestamp">
       Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
@@ -22,7 +41,3 @@
 	</span>
   </td>
 </tr>
-
-<% if feed_item.parent == feed_item.id %>
-	<td ></td>
-<% end %>
