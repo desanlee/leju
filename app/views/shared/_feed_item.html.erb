@@ -31,11 +31,8 @@
 	 <% end %>
 	  
     <span class="timestamp">
-      发起人：<%= link_to feed_item.user.name, feed_item.user %> &nbsp; <br>活动日期：<font color='red'><%= feed_item.schedual.strftime('%Y-%m-%d') %> </font> &nbsp; <br>最少<font color='red'><%= feed_item.peoplecount %></font>人报名才成行<br></span>
-	<span class="content"><%= feed_item.content%></span>
-	<span class="timestamp">
-      Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
-    </span>
+      发起人：<%= link_to feed_item.user.name, feed_item.user %> &nbsp;Posted <%= time_ago_in_words(feed_item.created_at) %> ago. <br>活动日：<font color='red'><%= feed_item.schedual.strftime('%Y-%m-%d') %> </font> &nbsp; 最少<font color='red'><%= feed_item.peoplecount %></font>人报名才成行<br></span>
+	<span class="content">&nbsp; &nbsp; <%= feed_item.content%></span>
 	<span class="operation">
 		<%= link_to "评论", feed_item %> <%= feed_item.comments.count %> | <%= link_to "报名", feed_item %>(<%= feed_item.applicants.count%>/<%= feed_item.peoplecount%>) | <%= link_to "修改", edit_micropost_path(feed_item) %>
 	</span>
