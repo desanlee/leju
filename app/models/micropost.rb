@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: microposts
+#
+#  id          :integer         not null, primary key
+#  content     :string(255)
+#  user_id     :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  count       :integer
+#  parent      :integer
+#  peoplecount :integer
+#  schedual    :datetime
+#
+
 class Micropost < ActiveRecord::Base
 	attr_accessible :content
 	attr_accessible :peoplecount

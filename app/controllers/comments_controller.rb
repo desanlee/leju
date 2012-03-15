@@ -13,6 +13,16 @@ class CommentsController < ApplicationController
 	
     if @comment.save
 		flash[:success] = "Comment created!"
+		
+		# 新发评论后，计划制定者
+		@notification = Notification.new(:user_id => @micropost.user_id, :noti_type => "newcmt", :target_id => @micropost.id ) 
+		@notification.save
+		# 新发评论后，提醒所有评论过此计划的人
+		@micropost.comments.each do |c|
+			@notification = Notification.new(:user_id => c.user_id, :noti_type => "newcmt", :target_id => @micropost.id ) 
+			@notification.save
+		end
+			
 		redirect_to @micropost
     else
 		@feed_items = []

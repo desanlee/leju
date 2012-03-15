@@ -23,6 +23,13 @@ class MicropostsController < ApplicationController
 		@micropost  = current_user.microposts.build(params[:micropost])
 		if @micropost.save
 			flash[:success] = "Micropost created!"
+			
+			# 新发活动计划后，提醒所有关注者
+			current_user.followers.each do |f|
+				@notification = f.notifications.build(:noti_type => "newplan", :target_id => @micropost.id ) 
+				@notification.save
+			end
+			
 			redirect_to root_path
 		else
 			@feed_items = []
@@ -35,7 +42,14 @@ class MicropostsController < ApplicationController
 		if @micropost.save
 			@micropost.parent = @micropost.id
 			@micropost.save
-			flash[:success] = "Micropost created!"
+			flash[:success] = "micropost created!"
+			
+			# 新发活动计划后，提醒所有关注者
+			current_user.followers.each do |f|
+				@notification = f.notifications.build(:noti_type => "newplan", :target_id => @micropost.id ) 
+				@notification.save
+			end
+
 			redirect_to root_path
 		else
 			@feed_items = []

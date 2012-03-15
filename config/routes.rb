@@ -16,6 +16,7 @@ Leju::Application.routes.draw do
   resources :comments, :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
   resources :applylists, :only => [:create, :destroy]
+  resources :notifications
 
   root :to => 'pages#home'
 

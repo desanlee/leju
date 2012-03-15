@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120223030757) do
+ActiveRecord::Schema.define(:version => 20120313121852) do
 
   create_table "applications", :force => true do |t|
     t.integer  "micropost_id"
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(:version => 20120223030757) do
   end
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "noti_type"
+    t.integer  "target_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["user_id", "noti_type", "target_id"], :name => "index_notifications_on_user_id_and_noti_type_and_target_id", :unique => true
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"

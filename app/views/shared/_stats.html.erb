@@ -19,3 +19,11 @@
     </tr>
   </table>
 </div>
+
+<div class="notification">
+	<% if @feed_notifications %>
+		<table class="notifications" summary="User notifications">
+			<%= render :partial => 'shared/feed_notification', :collection => @feed_notifications %>
+		</table>
+	<% end %>
+</div>

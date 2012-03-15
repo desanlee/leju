@@ -5,6 +5,7 @@ class PagesController < ApplicationController
 	@feed_items = current_user.feed.paginate(:page => params[:page]) if signed_in?
 	@feed_items_color = 0
 	@feed_items_parent = 0
+	@feed_notifications = current_user.notifications if signed_in?
   end
 
   def contact

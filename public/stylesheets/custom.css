@@ -286,3 +286,61 @@ form.new_comment textarea {
   height: 1em;
   margin-bottom: 0;
 }
+
+/* notifications list */
+table.notifications  {
+	width: 100%;
+}
+
+table.notifications tr td.notification {
+	color: #F00;
+	font-size: 100%;
+	width: 100%;
+	vertical-align: top;
+}
+
+table.notifications tr td.notib {
+	font-size: 80%;
+	width: 20%;
+	vertical-align: top;
+}
+
+table.notifications tr td.notib div.notiactions {
+		width:35px;
+ }
+ 
+ input.notiactions {
+	width:30px;
+}
+
+/* one micropost show*/
+table.micropost {
+  margin-top: 1em;
+}
+
+table.micropost tr {
+}
+
+table.micropost tr td.titleinfo {
+	font-size: 100%;
+	color: #09c;
+	
+}
+
+table.micropost tr td.mainpost {
+	font-size: 140%;
+}
+
+table.micropost tr td.maincomment {
+	font-size: 100%;
+	color: #09c;
+	background-color: #ffd;
+}
+
+table.micropost tr td.userin {
+	font-size: 100%;
+	color: #09c;
+	background-color: #dfd;
+}
+
+
