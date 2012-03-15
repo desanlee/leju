@@ -15,9 +15,11 @@ bundle exec rake db:reset
 
 heroku rename newname -app oldname
 
+git add .
 git commit -a -m "change user list page"
 git push
 git push heroku master
+heroku rake db:migrate
 
 
 rails generate model Notification user_id:integer noti_type:string target_id:integer
