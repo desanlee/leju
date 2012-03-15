@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: notifications
+#
+#  id         :integer         not null, primary key
+#  user_id    :integer
+#  noti_type  :string(255)
+#  target_id  :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  noti_type: MyString
+  target_id: 1
+
+two:
+  user_id: 1
+  noti_type: MyString
+  target_id: 1

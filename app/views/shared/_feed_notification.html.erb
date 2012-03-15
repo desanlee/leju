@@ -1,0 +1,21 @@
+<tr >
+	<td class="notification">
+		<% if feed_notification.noti_type == "newplan" %>
+			有新计划
+		<% elsif feed_notification.noti_type == "newcmt" %>
+			有新评论	
+		<% elsif feed_notification.noti_type == "newin" %>
+			有新报名
+		<% elsif feed_notification.noti_type == "newfollow" %>
+			有新粉丝
+		<% end %>
+	</td>
+	<td class="notib">
+		<%= form_for feed_notification, :html => { :method => :get } do |f| %>
+			<div class="notiactions"><%= f.submit "查看" %></div>
+		<% end %></td><td class="notib">	
+		<%= form_for feed_notification, :html => { :method => :delete } do |f| %>
+			<div class="notiactions"><%= f.submit "忽略" %></div>
+		<% end %></td>
+	</td>
+</tr>
