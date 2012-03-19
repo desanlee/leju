@@ -36,7 +36,7 @@ module Leju
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
-	config.active_record.default_timezone = :local
+	config.active_record.default_timezone = 'Beijing'
     config.time_zone = 'Beijing'
 
     # Configure sensitive parameters which will be filtered from the log file.
