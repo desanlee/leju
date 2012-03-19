@@ -38,6 +38,7 @@ module Leju
     config.encoding = "utf-8"
 	config.active_record.default_timezone = :local
     config.time_zone = 'Beijing'
+	Time.zone = "Beijing"
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
