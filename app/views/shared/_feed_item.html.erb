@@ -36,6 +36,7 @@
 	<span class="operation">
 		<%= link_to "评论", feed_item %> <%= feed_item.comments.count %> | <%= link_to "报名", feed_item %>(<%= feed_item.applicants.count%>/<%= feed_item.peoplecount%>) | <%= link_to "修改", edit_micropost_path(feed_item) %>
 	</span>
-	测试时间和时区中...<br>计划时间：<%= feed_item.schedual.strftime("%Y-%m-%d %H:%M:%S") %> <br>当前时间：<%= Time.now.localtime.strftime("%Y-%m-%d %H:%M:%S") %>
+
+	测试时间和时区中...<br>计划时间：<%= feed_item.schedual.strftime("%Y-%m-%d %H:%M:%S") %> <br>当前时间：<%= Time.zone.now.strftime("%Y-%m-%d %H:%M:%S") %><br>当前时区：<%= Time.zone %>
   </td>
 </tr>
