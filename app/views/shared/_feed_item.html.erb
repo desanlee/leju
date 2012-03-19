@@ -12,9 +12,9 @@
 <tr >
   <td class="gravatar">
     <%= link_to gravatar_for(feed_item.user), feed_item.user %>
-	<% if feed_item.schedual.strftime('%Y%m%d').to_i > Time.now.strftime('%Y%m%d').to_i %>
+	<% if feed_item.schedual.strftime('%Y%m%d').to_i > Time.zone.now.strftime('%Y%m%d').to_i %>
 		<p style="color:green"><b>招募中!</b></p>
-	<% elsif feed_item.schedual.strftime('%Y%m%d').to_i == Time.now.strftime('%Y%m%d').to_i && feed_item.peoplecount <= feed_item.applicants.count %>
+	<% elsif feed_item.schedual.strftime('%Y%m%d').to_i == Time.zone.now.strftime('%Y%m%d').to_i && feed_item.peoplecount <= feed_item.applicants.count %>
 		<p style="color:red"><b>进行中!</b></p>
 	<% else %>
 		<p style="color:grey"><b>已过期</b></p>
@@ -37,6 +37,5 @@
 		<%= link_to "评论", feed_item %> <%= feed_item.comments.count %> | <%= link_to "报名", feed_item %>(<%= feed_item.applicants.count%>/<%= feed_item.peoplecount%>) | <%= link_to "修改", edit_micropost_path(feed_item) %>
 	</span>
 
-	测试时间和时区中...<br>计划时间：<%= feed_item.schedual.strftime("%Y-%m-%d %H:%M:%S") %> <br>当前时间：<%= Time.zone.now.strftime("%Y-%m-%d %H:%M:%S") %><br>当前时区：<%= Time.zone %>
   </td>
 </tr>
