@@ -16,7 +16,7 @@ bundle exec rake db:reset
 heroku rename newname -app oldname
 
 git add .
-git commit -a -m "change user list page"
+git commit -a -m ""
 git push
 git push heroku master
 heroku rake db:migrate

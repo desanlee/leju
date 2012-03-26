@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
     if @comment.save
 		flash[:success] = "Comment created!"
 		
-		# 新发评论后，计划制定者
+		# 新发评论后，提醒计划制定者
 		@notification = Notification.new(:user_id => @micropost.user_id, :noti_type => "newcmt", :target_id => @micropost.id ) 
 		@notification.save
 		# 新发评论后，提醒所有评论过此计划的人

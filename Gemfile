@@ -10,6 +10,7 @@ gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.pre2'
 gem 'annotate', '2.4.0'
 gem 'factory_girl_rails', '1.0'
+gem 'rufus-scheduler'
 
 # Use unicorn as the web server
 # gem 'unicorn'
